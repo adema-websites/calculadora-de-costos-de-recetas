@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial Paso a Paso para Instalar la Calculadora de Costos de Recetas</title>
+    <meta name="description" content="Tutorial paso a paso para instalar y usar la Calculadora de Costos de Recetas en Windows, macOS y Linux. Incluye Git, Python, clonacion, configuracion inicial y comandos para copiar rapido.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://adema-websites.github.io/calculadora-de-costos-de-recetas/tutorial.html">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:url" content="https://adema-websites.github.io/calculadora-de-costos-de-recetas/tutorial.html">
+    <meta property="og:title" content="Tutorial Paso a Paso para Instalar la Calculadora de Costos de Recetas">
+    <meta property="og:description" content="Guia completa para instalar Git y Python, clonar el repositorio y ejecutar la app en Windows, macOS y Linux.">
+    <meta property="og:image" content="logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tutorial Paso a Paso para Instalar la Calculadora de Costos de Recetas">
+    <meta name="twitter:description" content="Windows, macOS y Linux. Comandos listos para copiar, primer arranque y ubicacion de datos.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/landing.css">
+    <link rel="stylesheet" href="static/tutorial.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "Como instalar la Calculadora de Costos de Recetas",
+            "description": "Tutorial paso a paso para instalar Git y Python, clonar el repositorio y ejecutar la aplicacion en Windows, macOS y Linux.",
+            "url": "https://adema-websites.github.io/calculadora-de-costos-de-recetas/tutorial.html",
+            "totalTime": "PT20M",
+            "tool": ["Git", "Python 3.12 o superior", "Terminal o consola"],
+            "step": [
+                {
+                    "@type": "HowToStep",
+                    "name": "Instalar Git y Python",
+                    "text": "Instala Git y Python 3.12 o superior segun tu sistema operativo."
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Clonar el repositorio",
+                    "text": "Clona el repositorio oficial desde GitHub y entra en la carpeta del proyecto."
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Preparar el entorno",
+                    "text": "Crea y activa el entorno virtual, instala dependencias y genera el archivo .env."
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Migrar y crear usuario",
+                    "text": "Aplica migraciones, crea el superusuario y ejecuta el servidor local."
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <div class="page-shell tutorial-shell">
+        <header class="site-header">
+            <div class="container header-inner">
+                <a class="brand" href="index.html#inicio" aria-label="Volver al inicio del sitio">
+                    <img src="logo.png" alt="Logo de Excel-ente" class="brand-mark">
+                    <span class="brand-copy">
+                        <strong>Calculadora de Costos de Recetas</strong>
+                        <small>Tutorial paso a paso</small>
+                    </span>
+                </a>
+
+                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span class="sr-only">Abrir menu</span>
+                </button>
+
+                <nav id="site-nav" class="site-nav" aria-label="Principal">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#windows">Windows</a>
+                    <a href="#macos">macOS</a>
+                    <a href="#linux">Linux</a>
+                    <a href="#datos">Datos</a>
+                    <a href="index.html">Landing</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="inicio" class="hero-section tutorial-hero">
+                <div class="container hero-grid tutorial-hero-grid">
+                    <div class="hero-copy">
+                        <p class="eyebrow">Guia open source para una instalacion prolija</p>
+                        <h1>Tutorial paso a paso para instalar, ejecutar y usar la app.</h1>
+                        <p class="hero-lead">
+                            Esta pagina resume el flujo ideal para un buen repositorio open source: instalar Git y Python, clonar el proyecto oficial, preparar el entorno, abrir la aplicacion por primera vez y entender donde quedan guardados los datos.
+                        </p>
+                        <div class="hero-actions">
+                            <a class="button button-primary" href="https://github.com/Excel-ente/calculadora-de-costos-de-recetas" target="_blank" rel="noreferrer">Ver repositorio</a>
+                            <a class="button button-secondary" href="https://www.youtube.com/@excel-ente" target="_blank" rel="noreferrer">Ver video tutorial</a>
+                        </div>
+                        <ul class="hero-points" aria-label="Resumen del tutorial">
+                            <li>Windows con instalacion rapida mediante iniciar_windows.bat</li>
+                            <li>macOS y Linux con comandos manuales claros</li>
+                            <li>Bloques listos para copiar en terminal</li>
+                            <li>Notas sobre ubicacion de datos y primer uso real</li>
+                        </ul>
+                    </div>
+
+                    <div class="tutorial-panel-stack">
+                        <article class="glass-card spotlight-card">
+                            <span class="chip chip-sugar">Flujo recomendado</span>
+                            <h2>Instala dependencias, clona el repo y corre la app local.</h2>
+                            <p>
+                                La aplicacion corre localmente con Python y Django. En Windows conviene usar el .bat de primer arranque. En macOS y Linux, el camino correcto es hacerlo desde terminal con entorno virtual.
+                            </p>
+                            <div class="metric-ribbon">
+                                <div>
+                                    <strong>Datos locales</strong>
+                                    <span>db.sqlite3, .env, media y venv</span>
+                                </div>
+                                <div>
+                                    <strong>Entrada</strong>
+                                    <span>http://127.0.0.1:8000/admin/</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="glass-card mini-card mini-card-left">
+                            <p>"copiar, pegar, ejecutar y seguir sin perder tiempo"</p>
+                        </article>
+
+                        <article class="glass-card mini-card mini-card-right">
+                            <p>"una guia pensada para usuarios y tambien para contribuidores"</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="trust-section tutorial-anchor-section">
+                <div class="container trust-grid tutorial-anchor-grid">
+                    <a class="trust-link" href="#windows">
+                        <strong>Windows</strong>
+                        <p>Instalacion guiada con Git, Python y primer arranque con iniciar_windows.bat.</p>
+                    </a>
+                    <a class="trust-link" href="#macos">
+                        <strong>macOS</strong>
+                        <p>Instalacion por terminal con Homebrew, entorno virtual y comandos listos para copiar.</p>
+                    </a>
+                    <a class="trust-link" href="#linux">
+                        <strong>Linux</strong>
+                        <p>Flujo manual para Ubuntu o Debian y referencia para otras distros.</p>
+                    </a>
+                </div>
+            </section>
+
+            <section class="content-section setup-section">
+                <div class="container">
+                    <div class="section-heading">
+                        <p class="eyebrow">Antes de empezar</p>
+                        <h2>Git y Python son la base de una instalacion limpia.</h2>
+                        <p>
+                            Si tu idea es descargar de forma segura y que no haya alertas raras del navegador o de bloqueadores, el mejor camino es instalar Git y Python primero, clonar el repositorio oficial y ejecutar la aplicacion desde tu propia carpeta local.
+                        </p>
+                    </div>
+
+                    <div class="feature-grid tutorial-prereq-grid">
+                        <article class="feature-card feature-card-accent">
+                            <h3>Python 3.12 o superior</h3>
+                            <p>Es el runtime principal del proyecto. En Windows conviene instalarlo desde python.org marcando Add Python to PATH.</p>
+                            <a class="text-link" href="https://www.python.org/downloads/" target="_blank" rel="noreferrer">Descargar Python</a>
+                        </article>
+                        <article class="feature-card">
+                            <h3>Git</h3>
+                            <p>Permite clonar el repositorio oficial, actualizarlo con orden y contribuir como corresponde en un proyecto open source.</p>
+                            <a class="text-link" href="https://git-scm.com/downloads" target="_blank" rel="noreferrer">Descargar Git</a>
+                        </article>
+                        <article class="feature-card">
+                            <h3>Carpeta fija</h3>
+                            <p>Todo queda guardado dentro de la carpeta del proyecto. Elegi un lugar permanente antes del primer arranque para no mover la base ni el entorno virtual.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="windows" class="content-section tutorial-system-section">
+                <div class="container tutorial-system-grid">
+                    <div class="section-heading section-heading-left">
+                        <p class="eyebrow">Windows</p>
+                        <h2>La ruta recomendada para la mayoria de los usuarios.</h2>
+                        <p>
+                            En Windows el proyecto tiene una ventaja clara: <strong>iniciar_windows.bat</strong> automatiza el primer arranque. Aun asi, conviene instalar primero Python y Git, clonar el repositorio oficial y ejecutar el .bat como administrador la primera vez.
+                        </p>
+                        <div class="callout-panel tutorial-callout-panel">
+                            <div>
+                                <strong>Instalacion segura</strong>
+                                <p>Clonar con Git evita descargas dudosas y deja el origen del proyecto bien claro.</p>
+                            </div>
+                            <div>
+                                <strong>Primer arranque</strong>
+                                <p>El .bat crea el entorno, instala dependencias, aplica migraciones y puede crear el acceso directo del escritorio.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-command-stack">
+                        <article class="tutorial-step-card">
+                            <span class="step">1</span>
+                            <h3>Verificar herramientas</h3>
+                            <p>Ejecuta estos comandos en PowerShell o CMD para confirmar que Python y Git ya estan instalados.</p>
+                            <div class="command-card">
+                                <div class="command-card-head">
+                                    <strong>Comprobar versiones</strong>
+                                    <button class="copy-button" type="button" data-copy-target="win-check">Copiar</button>
+                                </div>
+                                <pre><code id="win-check">python --version
+git --version</code></pre>
+                            </div>
+                        </article>
+
+                        <article class="tutorial-step-card">
+                            <span class="step">2</span>
+                            <h3>Clonar el repositorio</h3>
+                            <p>Entra en una carpeta de trabajo tuya, clona el repo oficial y ubicate dentro del proyecto.</p>
+                            <div class="command-card">
+                                <div class="command-card-head">
+                                    <strong>Clonar y entrar</strong>
+                                    <button class="copy-button" type="button" data-copy-target="win-clone">Copiar</button>
+                                </div>
+                                <pre><code id="win-clone">git clone https://github.com/Excel-ente/calculadora-de-costos-de-recetas.git
+cd calculadora-de-costos-de-recetas</code></pre>
+                            </div>
+                        </article>
+
+                        <article class="tutorial-step-card">
+                            <span class="step">3</span>
+                            <h3>Primer inicio automatico</h3>
+                            <p>La primera vez conviene ejecutar el archivo como administrador. El proceso tambien puede ofrecerte crear un acceso directo al escritorio.</p>
+                            <div class="command-card">
+                                <div class="command-card-head">
+                                    <strong>Ejecutar el .bat</strong>
+                                    <button class="copy-button" type="button" data-copy-target="win-bat">Copiar</button>
+                                </div>
+                                <pre><code id="win-bat">.\iniciar_windows.bat</code></pre>
+                            </div>
+                        </article>
+
+                        <article class="tutorial-step-card">
+                            <span class="step">4</span>
+                            <h3>Ruta manual alternativa</h3>
+                            <p>Si preferis controlar cada paso, este bloque hace exactamente lo mismo de forma explicita desde consola.</p>
+                            <div class="command-card">
+                                <div class="command-card-head">
+                                    <strong>Instalacion manual en Windows</strong>
+                                    <button class="copy-button" type="button" data-copy-target="win-manual">Copiar</button>
+                                </div>
+                                <pre><code id="win-manual">python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+copy .env.example .env
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver</code></pre>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="macos" class="content-section tutorial-system-section tutorial-system-section-alt">
+                <div class="container tutorial-system-grid">
+                    <div class="section-heading section-heading-left">
+                        <p class="eyebrow">macOS</p>
+                        <h2>Instalacion manual prolija desde Terminal.</h2>
+                        <p>
+                            En macOS no se usa el archivo <strong>iniciar_windows.bat</strong>. El camino correcto es instalar Git y Python, clonar el repo y levantar Django manualmente con entorno virtual. Si ya usas Homebrew, el proceso es directo.
+                        </p>
+                        <div class="callout-panel tutorial-callout-panel">
+                            <div>
+                                <strong>Preferencia</strong>
+                                <p>Si no tenes Homebrew, podes instalar Git y Python desde sus sitios oficiales y luego seguir los comandos del proyecto.</p>
+                            </div>
+                            <div>
+                                <strong>Comando de activacion</strong>
+                                <p>En macOS el entorno virtual se activa con <strong>source venv/bin/activate</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-command-stack">
+                        <article class="tutorial-step-card">
+                            <span class="step">1</span>
+                            <h3>Instalar herramientas</h3>
+                            <p>Si ya usas Homebrew, este es el camino mas corto para dejar Git y Python listos.</p>
+                            <div class="command-card">
+                                <div class="command-card-head">
+                                    <strong>Instalar con Homebrew</strong>
+                                    <button class="copy-button" type="button" data-copy-target="mac-install">Copiar</button>
+                                </div>
+                                <pre><code id="mac-install">brew install python git
+python3 --version
+git --version</code></pre>
+                            </div>
+                        </article>
+
+                        <article class="tutorial-step-card">
+                            <span class="step">2</span>
+                            <h3>Clonar y preparar el proyecto</h3>
+                            <p>Clona el repositorio oficial y entra a la carpeta antes de crear el entorno virtual.</p>
+                            <div class="command-card">
+                                <div class="command-card-head">
+                                    <strong>Clonar el repositorio</strong>
+                                    <button class="copy-button" type="button" data-copy-target="mac-clone">Copiar</button>
+                                </div>
+                                <pre><code id="mac-clone">git clone https://github.com/Excel-ente/calculadora-de-costos-de-recetas.git
+cd calculadora-de-costos-de-recetas</code></pre>
+                            </div>
+                        </article>
+
+                        <article class="tutorial-step-card">
+                            <span class="step">3</span>
+                            <h3>Crear entorno y arrancar Django</h3>
+                            <p>Este bloque deja el proyecto listo para correr localmente y abrir el panel de administracion.</p>
+                            <div class="command-card">
+                                <div class="command-card-head">
+                                    <strong>Primer arranque en macOS</strong>
+                                    <button class="copy-button" type="button" data-copy-target="mac-run">Copiar</button>
+                                </div>
+                                <pre><code id="mac-run">python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver</code></pre>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="linux" class="content-section tutorial-system-section">
+                <div class="container tutorial-system-grid">
+                    <div class="section-heading section-heading-left">
+                        <p class="eyebrow">Linux</p>
+                        <h2>Terminal clara para Ubuntu, Debian y derivadas.</h2>
+                        <p>
+                            En Linux el flujo es muy parecido al de macOS, pero normalmente primero instalas paquetes del sistema con el gestor de tu distro. Aca te dejo la ruta base para sistemas Debian o Ubuntu. Si usas Fedora, Arch o similares, cambia ese primer bloque por el equivalente de tu distribucion.
+                        </p>
+                        <div class="callout-panel tutorial-callout-panel">
+                            <div>
+                                <strong>Paquetes base</strong>
+                                <p>Necesitas Python 3, soporte para entornos virtuales, pip y Git.</p>
+                            </div>
+                            <div>
+                                <strong>Uso diario</strong>
+                                <p>Luego del primer arranque solo activas el entorno y levantas runserver cuando quieras usar la app.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tutorial-command-stack">
+                        <article class="tutorial-step-card">
+                            <span class="step">1</span>
+                            <h3>Instalar dependencias del sistema</h3>
+                            <p>Este ejemplo sirve para Ubuntu y Debian. En otras distribuciones usa el gestor de paquetes equivalente.</p>
+                            <div class="command-card">
+                                <div class="command-card-head">
+                                    <strong>Instalar Python y Git</strong>
+                                    <button class="copy-button" type="button" data-copy-target="linux-install">Copiar</button>
+                                </div>
+                                <pre><code id="linux-install">sudo apt update
+sudo apt install -y python3 python3-venv python3-pip git</code></pre>
+                            </div>
+                        </article>
+
+                        <article class="tutorial-step-card">
+                            <span class="step">2</span>
+                            <h3>Clonar el proyecto</h3>
+                            <p>Clona el repositorio en una carpeta tuya y entra antes de crear el entorno virtual.</p>
+                            <div class="command-card">
+                                <div class="command-card-head">
+                                    <strong>Clonar el repositorio</strong>
+                                    <button class="copy-button" type="button" data-copy-target="linux-clone">Copiar</button>
+                                </div>
+                                <pre><code id="linux-clone">git clone https://github.com/Excel-ente/calculadora-de-costos-de-recetas.git
+cd calculadora-de-costos-de-recetas</code></pre>
+                            </div>
+                        </article>
+
+                        <article class="tutorial-step-card">
+                            <span class="step">3</span>
+                            <h3>Entorno virtual y servidor</h3>
+                            <p>Con este bloque ya quedas listo para entrar al admin local y probar una receta de ejemplo.</p>
+                            <div class="command-card">
+                                <div class="command-card-head">
+                                    <strong>Primer arranque en Linux</strong>
+                                    <button class="copy-button" type="button" data-copy-target="linux-run">Copiar</button>
+                                </div>
+                                <pre><code id="linux-run">python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver</code></pre>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="datos" class="content-section audience-section">
+                <div class="container audience-grid">
+                    <div class="section-heading section-heading-left">
+                        <p class="eyebrow">Donde quedan tus datos</p>
+                        <h2>Todo vive dentro de la carpeta del proyecto.</h2>
+                        <p>
+                            Este punto es importante para usuarios y para soporte. Si mueves la carpeta del proyecto sin entender que guarda adentro, puedes perder la referencia al entorno o a la base local. Por eso conviene elegir una ruta fija desde el inicio.
+                        </p>
+                    </div>
+                    <div class="benefit-list tutorial-data-list">
+                        <article>
+                            <h3>db.sqlite3</h3>
+                            <p>Ahi queda la base de datos local con usuarios, recetas, productos y configuracion del sistema.</p>
+                        </article>
+                        <article>
+                            <h3>.env</h3>
+                            <p>Guarda la configuracion principal del entorno local y parametros del proyecto.</p>
+                        </article>
+                        <article>
+                            <h3>media/</h3>
+                            <p>Contiene archivos subidos por la aplicacion, como imagenes u otros recursos del negocio.</p>
+                        </article>
+                        <article>
+                            <h3>venv/</h3>
+                            <p>Es el entorno virtual de Python. No conviene borrarlo ni moverlo si luego quieres relanzar la app rapido.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content-section contribute-section">
+                <div class="container contribute-grid">
+                    <div>
+                        <p class="eyebrow">Uso diario y comunidad</p>
+                        <h2>Despues del primer arranque, usar y mejorar el proyecto es simple.</h2>
+                        <p>
+                            En Windows puedes relanzar la app con el acceso directo del escritorio o con el mismo archivo <strong>iniciar_windows.bat</strong>. En macOS y Linux, basta con entrar a la carpeta del proyecto, activar el entorno virtual y ejecutar <strong>python manage.py runserver</strong>.
+                        </p>
+                        <p>
+                            Si te sirve la herramienta, tambien puedes abrir issues, proponer mejoras y enviar pull requests. Ese es el tipo de documentacion que fortalece un repositorio open source y ayuda tanto a usuarios finales como a contribuidores.
+                        </p>
+                    </div>
+
+                    <div class="contribute-card tutorial-side-links">
+                        <ol>
+                            <li>Probar el sistema con una receta de ejemplo.</li>
+                            <li>Verificar que la base y las imagenes queden en tu carpeta local.</li>
+                            <li>Guardar el acceso directo o tus comandos favoritos para uso diario.</li>
+                            <li>Volver al repositorio para reportar dudas o mejoras.</li>
+                        </ol>
+                        <p class="muted">
+                            Consejo practico: si el proyecto te ayudo, deja una estrella en GitHub. Esa senal tambien ayuda a que mas personas encuentren el software y confien en el repositorio.
+                        </p>
+                        <a class="text-link" href="https://github.com/Excel-ente/calculadora-de-costos-de-recetas" target="_blank" rel="noreferrer">Abrir GitHub</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container footer-grid">
+                <div>
+                    <strong>Tutorial de instalacion</strong>
+                    <p>Guia paso a paso para descargar, clonar y ejecutar la Calculadora de Costos de Recetas en varios sistemas operativos.</p>
+                </div>
+                <div>
+                    <strong>Proyecto</strong>
+                    <p>Software gratuito y open source para pastelerias, panaderias y negocios gastronomicos.</p>
+                </div>
+                <div>
+                    <strong>Enlaces utiles</strong>
+                    <p>Repositorio oficial, videos de YouTube y documentacion para seguir mejorando la herramienta.</p>
+                </div>
+            </div>
+            <div class="container footer-bottom">
+                <p>© <span id="current-year"></span> Excel-ente. Licencia Apache 2.0.</p>
+                <a href="#inicio">Volver arriba</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="static/landing.js"></script>
+    <script src="static/tutorial.js"></script>
+</body>
+</html>

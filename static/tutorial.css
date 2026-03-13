@@ -1,0 +1,148 @@
+.tutorial-hero {
+    padding-bottom: 2.8rem;
+}
+
+.tutorial-hero-grid {
+    align-items: center;
+}
+
+.tutorial-panel-stack {
+    position: relative;
+    min-height: 440px;
+}
+
+.tutorial-anchor-section {
+    padding-top: 0;
+}
+
+.tutorial-anchor-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.trust-link {
+    display: block;
+    padding: 1.25rem;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.trust-link:hover,
+.trust-link:focus-visible {
+    transform: translateY(-2px);
+}
+
+.trust-link p {
+    color: var(--muted);
+}
+
+.tutorial-prereq-grid {
+    align-items: stretch;
+}
+
+.tutorial-system-grid {
+    display: grid;
+    gap: 1.2rem;
+}
+
+.tutorial-system-section-alt {
+    background: linear-gradient(180deg, rgba(255, 247, 239, 0.85), rgba(255, 250, 246, 0));
+}
+
+.tutorial-command-stack {
+    display: grid;
+    gap: 1rem;
+}
+
+.tutorial-step-card {
+    padding: 1.25rem;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
+}
+
+.tutorial-step-card p {
+    color: var(--muted);
+}
+
+.command-card {
+    margin-top: 1rem;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(106, 64, 45, 0.16);
+    background: rgba(67, 35, 29, 0.96);
+    color: #fff7f1;
+}
+
+.command-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.command-card-head strong {
+    margin: 0;
+}
+
+.command-card pre {
+    margin: 0;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: "Consolas", "SFMono-Regular", Consolas, monospace;
+    font-size: 0.94rem;
+    line-height: 1.6;
+}
+
+.command-card code {
+    font-family: inherit;
+    white-space: pre;
+}
+
+.copy-button {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 0.6rem 0.9rem;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--berry) 100%);
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.copy-button.is-copied {
+    background: linear-gradient(135deg, #5c8a36 0%, #86a94a 100%);
+}
+
+.tutorial-callout-panel {
+    margin-top: 0.5rem;
+}
+
+.tutorial-data-list article {
+    padding-right: 0.25rem;
+}
+
+.tutorial-side-links .text-link {
+    margin-top: 1.2rem;
+}
+
+@media (min-width: 720px) {
+    .tutorial-system-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+    }
+}
+
+@media (min-width: 980px) {
+    .tutorial-panel-stack {
+        min-height: 520px;
+    }
+}

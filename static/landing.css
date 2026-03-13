@@ -166,6 +166,39 @@ button {
     color: var(--text);
 }
 
+.nav-btn {
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    text-align: center;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.nav-btn:hover,
+.nav-btn:focus-visible {
+    transform: translateY(-2px);
+    background: var(--bg-soft);
+}
+
+.nav-btn-outline {
+    color: var(--accent-deep);
+    border: 1.5px solid rgba(184, 92, 56, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.nav-btn-fill {
+    color: #fff;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--berry) 100%);
+    box-shadow: 0 6px 18px rgba(184, 92, 56, 0.22);
+}
+
+.nav-btn-fill:hover,
+.nav-btn-fill:focus-visible {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--berry) 100%);
+    box-shadow: 0 10px 24px rgba(184, 92, 56, 0.3);
+}
+
 .hero-section {
     padding: 2.25rem 0 3.25rem;
 }

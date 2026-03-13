@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adema-websites.github.io/calculadora-de-costos-de-recetas/sitemap.xml
