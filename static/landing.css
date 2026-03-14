@@ -236,16 +236,16 @@ h3 {
 }
 
 h1 {
-    font-size: clamp(2.6rem, 8vw, 5.5rem);
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
     max-width: 11ch;
 }
 
 h2 {
-    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
 }
 
 h3 {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
 }
 
 p {
@@ -339,7 +339,18 @@ p {
 
 .hero-card-stack {
     position: relative;
-    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-screenshot {
+    width: 100%;
+    max-width: 600px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--line);
+    display: block;
 }
 
 .glass-card,
@@ -735,8 +746,8 @@ p {
         gap: 2rem;
     }
 
-    .hero-card-stack {
-        min-height: 520px;
+    .hero-screenshot {
+        max-width: 100%;
     }
 
     .spotlight-card {
